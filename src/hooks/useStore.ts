@@ -267,11 +267,39 @@ export function useStore() {
   const getTotalPurchaseValue = useCallback(() => stock.reduce((sum, s) => sum + s.purchasePrice * s.quantity, 0), [stock]);
   const getLowStockItems = useCallback(() => stock.filter(s => s.quantity > 0 && s.quantity <= s.minStock), [stock]);
   const getStockByType = useCallback((typeId: string) => stock.filter(s => s.typeId === typeId), [stock]);
-
+  // Manual Refresh Function
+  const refreshData = useCallback(async () => {
+    if (!online) return;
+    try {
+      const items = await onlineStock.getAll();
+      if (items.length > 0) setStock(items.map(toLocalStock));
+      
+      const remoteInvoices = await onlineInvoices.getAll();
+      if (remoteInvoices.length > 0) {
+        setInvoices(remoteInvoices.map((inv: any) => ({
+          id: inv.id,
+          invoiceNumber: inv.invoice_number,
+          date: inv.created_at?.split('T')[0] || new Date().toISOString().split('T')[0],
+          customerName: inv.customer_name,
+          customerPhone: inv.customer_phone,
+          customerAddress: inv.customer_address,
+          items: inv.items,
+          subtotal: Number(inv.subtotal),
+          discount: Number(inv.discount),
+          total: Number(inv.total),
+          createdBy: inv.created_by,
+        })));
+      }
+    } catch (error) {
+      console.error("Manual refresh failed:", error);
+    }
+  }, [online]);
+  
   return {
     currentUser,
     online,
     stock,
+    refreshData,
     invoices,
     login,
     logout,
