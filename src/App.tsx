@@ -46,13 +46,19 @@ export default function App() {
     { key: 'settings', label: 'Settings', icon: <SettingsIcon className="w-5 h-5" /> },
   ];
 
-  const handleRefresh = () => {
-    setIsRefreshing(true);
-    setTimeout(() => {
-      setRefreshKey(prev => prev + 1);
-      setIsRefreshing(false);
-    }, 500);
-  };
+  const handleRefresh = async () => {
+  setIsRefreshing(true);
+  
+  // Supabase se live naya data khinchne ke liye yeh jor diya
+  if (store.refreshData) {
+    await store.refreshData();
+  }
+  
+  setTimeout(() => {
+    setRefreshKey(prev => prev + 1);
+    setIsRefreshing(false);
+  }, 500);
+};
 
   const mainBg = darkMode ? 'bg-gray-900 min-h-screen' : 'bg-gray-50 min-h-screen';
   const textLight = darkMode ? 'text-gray-100' : 'text-gray-800';
