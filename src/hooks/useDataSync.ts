@@ -39,11 +39,15 @@ export const useOnline = () => isSupabaseConfigured();
 
 export const onlineStock = {
   async getAll(): Promise<RemoteStockItem[]> {
-    if (!isSupabaseConfigured()) return [];
-    const { data, error } = await supabase.from('stock_items').select('*').order('created_at');
-    if (error) throw error;
-    return data || [];
-  },
+  if (!isSupabaseConfigured()) return [];
+  const { data, error } = await supabase
+    .from('stock_items')
+    .select('*')
+    .neq('id', `cb-${Date.now()}`) // Browser cache ko bypass karne ke liye dummy filter
+    .order('created_at');
+  if (error) throw error;
+  return data || [];
+},
 
   async upsert(item: Omit<RemoteStockItem, 'id' | 'created_at'> & { id?: string }) {
     if (!isSupabaseConfigured()) return;
@@ -96,12 +100,16 @@ export const onlineInvoices = {
     if (error) throw error;
   },
 
-  async getAll(): Promise<RemoteInvoice[]> {
-    if (!isSupabaseConfigured()) return [];
-    const { data, error } = await supabase.from('invoices').select('*').order('created_at', { ascending: false });
-    if (error) throw error;
-    return data || [];
-  },
+async getAll(): Promise<RemoteInvoice[]> {
+  if (!isSupabaseConfigured()) return [];
+  const { data, error } = await supabase
+    .from('invoices')
+    .select('*')
+    .neq('id', `cb-${Date.now()}`) // Browser cache ko bypass karne ke liye dummy filter
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  return data || [];
+},
 };
 
 export const onlineUsers = {
