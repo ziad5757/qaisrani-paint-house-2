@@ -105,7 +105,6 @@ export default function App() {
               <div className="hidden lg:flex items-center gap-1 text-[10px] text-blue-200 bg-white/10 rounded-full px-2 py-1 mr-1" title={store.online ? 'Online Mode - Data synced' : 'Offline Mode - Local only'}>
                 {store.online ? <><Wifi className="w-3 h-3 text-green-300" /><span>Online</span></> : <><WifiOff className="w-3 h-3 text-yellow-300" /><span>Offline</span></>}
               </div>
-{currentPage === 'calculator' && <PaintCalculator />}
               {/* Refresh */}
               <button
                 onClick={handleRefresh}
@@ -184,7 +183,9 @@ export default function App() {
             darkMode={darkMode}
           />
         )}
-
+        {currentPage === 'calculator' && (
+  <PaintCalculator />
+)}
         {currentPage === 'invoice' && (
           <InvoiceCreate
             stock={store.stock}
