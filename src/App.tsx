@@ -9,7 +9,7 @@ import PaintCalculator from './components/PaintCalculator';
 import Settings from './components/Settings';
 import { LayoutDashboard, FileText, Settings as SettingsIcon, LogOut, User, History, Sun, Moon, RefreshCw, Wifi, WifiOff } from 'lucide-react';
 
-type Page = 'dashboard' | 'invoice' | 'invoices' | 'settings' | 'stock' | string;
+type Page = 'dashboard' | 'invoice' | 'invoices' | 'settings' | 'stock' | 'calculator' | string;
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
