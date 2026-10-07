@@ -328,7 +328,39 @@ export const paintTypes: PaintType[] = [
       { name: 'Admiral', code: '7729' },
       { name: 'Jet Black', code: '7730' },
     ],
-  },
+  }, ,
+    {
+    id: 'super-matex-emulsion',
+    name: 'Super Matex Emulsion',
+    sizes: [
+      { name: 'Gallon', liters: '3.56 L' },
+      { name: 'Drum', liters: '14.56 L' }
+    ],
+    colors: [
+      { name: 'White', code: '9102' },
+      { name: 'Ash White', code: '50004' },
+      { name: 'Whipped Cream', code: '50006' },
+      { name: 'Garden Stone', code: '50011' },
+      { name: 'Off White', code: '50005' },
+      { name: 'Cockleshell', code: '50001' },
+      { name: 'Cream Beige', code: '50003' },
+      { name: 'Sunny Sands', code: '50002' },
+      { name: 'Warm Beige', code: '50007' },
+      { name: 'Rose White', code: '50013' },
+      { name: 'Blossom Pink', code: '50014' },
+      { name: 'Aquamarina', code: '50009' },
+      { name: 'Sea Blue', code: '50020' },
+      { name: 'Cosmetic Pink', code: '50008' },
+      { name: 'Evening Tea', code: '50017' },
+      { name: 'Green Sensation', code: '50010' },
+      { name: 'Lavender', code: '50018' },
+      { name: 'Peach', code: '50016' },
+      { name: 'Natural Brown', code: '50012' },
+      { name: 'Orange', code: '50019' },
+      { name: 'Tile Red', code: '50015' }
+    ]
+    }
+  
 ];
 
 export const shopInfo = {
