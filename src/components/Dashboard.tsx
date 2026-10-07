@@ -1,6 +1,7 @@
 import { StockItem } from '../types';
 import { paintTypes, shopInfo } from '../data/paintTypes';
 import PaintCalculator from './PaintCalculator';
+import { Package, TrendingUp, AlertTriangle, DollarSign, ShoppingCart, FileText, Calculator } from 'lucide-react';
 import { Package, TrendingUp, AlertTriangle, DollarSign, ShoppingCart, FileText } from 'lucide-react';
 
 interface DashboardProps {
@@ -61,6 +62,16 @@ export default function Dashboard({
             <p className="text-xs text-white/80">نیا بل بنائیں</p>
           </div>
         </button>
+        <button
+  onClick={() => onNavigate('calculator')}
+  className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4 rounded-xl flex items-center gap-3 hover:opacity-90"
+>
+  <Calculator className="w-8 h-8 text-white" />
+  <div className="text-left">
+    <p className="font-bold">Paint Calculator</p>
+    <p className="text-xs text-white/80">Deewaron aur room ka paint calculate karein</p>
+  </div>
+</button>
         <button
           onClick={() => onNavigate('stock')}
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-xl flex items-center gap-3 hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg"
