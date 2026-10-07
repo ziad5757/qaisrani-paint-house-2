@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PaintTypeView from './components/PaintTypeView';
 import InvoiceCreate from './components/InvoiceCreate';
+import PaintCalculator from './components/PaintCalculator';
 import Settings from './components/Settings';
 import { LayoutDashboard, FileText, Settings as SettingsIcon, LogOut, User, History, Sun, Moon, RefreshCw, Wifi, WifiOff } from 'lucide-react';
 
