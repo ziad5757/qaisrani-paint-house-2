@@ -1,7 +1,6 @@
 import { StockItem } from '../types';
 import { paintTypes, shopInfo } from '../data/paintTypes';
-import PaintCalculator from './PaintCalculator';
-import { Package, TrendingUp, AlertTriangle, DollarSign, ShoppingCart, FileText } from 'lucide-react';
+import { Package, TrendingUp, AlertTriangle, DollarSign, ShoppingCart, FileText, Calculator } from 'lucide-react';
 
 interface DashboardProps {
   stock: StockItem[];
