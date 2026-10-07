@@ -328,8 +328,8 @@ export const paintTypes: PaintType[] = [
       { name: 'Admiral', code: '7729' },
       { name: 'Jet Black', code: '7730' },
     ],
-  }, ,
-    {
+  },
+  {
     id: 'super-matex-emulsion',
     name: 'Super Matex Emulsion',
     sizes: [
